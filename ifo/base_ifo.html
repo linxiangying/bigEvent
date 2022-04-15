@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 导入 layui 的 css -->
+  <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+  <!-- 导入自己的 css -->
+  <link rel="stylesheet" href="../assets/css/ifo/base_ifo.css">
+</head>
+<body>
+  <div class="layui-card">
+    <div class="layui-card-header">修改用户信息</div>
+    <div class="layui-card-body">
+      <!-- lay-filter 为表单赋值取值做选择器 -->
+      <form class="layui-form" lay-filter="formUserIfo" >
+        <input type="hidden" name="id">
+        <!-- 登录名称 -->
+        <div class="layui-form-item">
+          <label class="layui-form-label">登录名称</label>
+          <!--  readOnly 表示只能读，不能填 -->
+          <div class="layui-input-block">
+            <input type="text" name="username" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" readOnly>
+          </div>
+        </div>
+        <!-- 用户昵称 -->
+        <div class="layui-form-item">
+          <label class="layui-form-label">用户昵称</label>
+          <div class="layui-input-block">
+            <input type="text" name="nickname" required  lay-verify="required|nickname" placeholder="请输入您的昵称" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <!-- 用户邮箱 -->
+        <div class="layui-form-item">
+          <label class="layui-form-label">用户邮箱</label>
+          <div class="layui-input-block">
+            <input type="text" name="email" required  lay-verify="required|email" placeholder="请输入您的邮箱" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <!-- 提交 & 重置 -->
+        <div class="layui-form-item" >
+          <div class="layui-input-block submitAndReset">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" >立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btnReset">重置</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- 导入 layui 的 js -->
+  <script src="../assets/lib/layui/layui.all.js"></script>
+  <!-- 导入 jQuery -->
+  <script src="../assets/lib/jquery.js"></script>
+  <!-- 导入 baseAPI -->
+  <script src="../assets/js/baseAPI.js"></script>
+  <!-- 导入 自己的 js -->
+  <script src="../assets/js/ifo/base_ifo.js"></script>
+</body>
+</html>

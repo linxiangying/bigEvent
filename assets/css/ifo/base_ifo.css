@@ -1,0 +1,26 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #f2f3f5;
+  padding: 15px;
+}
+.layui-form-item{
+  display:flex;
+}
+/* 输入框前文字长度 */
+.layui-form-label{
+  width: 120px;
+}
+/* 输入框限制长度 */
+.layui-input-block{
+  width: 400px;
+  padding-left: 0;
+  margin-left: 0;
+}
+/* 立即提交&重置按钮右移 */
+.submitAndReset{
+  margin-left: 120px;
+}
