@@ -1,0 +1,25 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #f2f2f2;
+  padding: 15px;
+}
+
+/** 标题 */
+.layui-card-header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/** 添加文章分类 弹出框 列表 */
+#form-add,#form-edit{
+  padding-top: 20px;
+  padding-right: 30px;
+}
+.layui-form-label{
+  width: 100px;
+}

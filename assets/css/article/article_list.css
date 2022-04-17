@@ -1,0 +1,16 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #eeeeee;
+  padding: 15px;
+}
+.layui-input-block{
+  margin-left: 0;
+  /* background-color: pink; */
+}
+#submit{
+  margin-left: 10px;
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="../assets/css/article/article_list.css">
+</head>
+<body>
+  <div class="layui-card">
+    <div class="layui-card-header">文章列表</div>
+    <div class="layui-card-body">
+      <!-- * 筛选区域 -->
+      <!-- layui-form-pane 可以设置左边的方框风格 -->
+      <form class="layui-form layui-form-pane" id="form-screen">
+        <!-- 分类 -->
+        <div class="layui-form-item layui-inline">
+          <label class="layui-form-label">分类</label>
+          <div class="layui-input-block">
+            <select name="cate_id">
+              <option value="">所有分类</option>
+              <option value="0">北京</option>
+              <option value="1">上海</option>
+              <option value="2">广州</option>
+              <option value="3">深圳</option>
+              <option value="4">杭州</option>
+            </select>
+          </div>
+        </div>
+        <!-- 状态 -->
+        <div class="layui-form-item layui-inline">
+          <label class="layui-form-label">状态</label>
+          <div class="layui-input-block">
+            <select name="state">
+              <!--! 页面显示的字是 >< 中间的字，value 是当用户选完之后我们要获取用户选择哪个选项而获取到的值 -->
+              <option value="">所有状态</option>
+              <option value="已发布">已发布</option>
+              <option value="草稿">草稿</option>
+            </select>
+          </div>
+        </div>
+        <!-- 筛选 & 重置 按钮 -->
+        <div class="layui-form-item layui-inline">
+          <!-- <div class="layui-input-block"> -->
+            <button class="layui-btn" lay-submit lay-filter="formDemo"
+            id="submit">筛选</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          <!-- </div> -->
+        </div>
+      </form>
+      <!--* 列表区域 -->
+      <table class="layui-table">
+        <colgroup>
+          <col >
+          <col width="180">
+          <col width="180">
+          <col width="180">
+          <col width="150">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>文章标题</th>
+            <th>分类</th>
+            <th>发表时间</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td>贤心</td>
+            <td>2016-11-29</td>
+            <td>人生就像是一场修行</td>
+            <td>人生就像是一场修行</td>
+            <td>人生就像是一场修行</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--* 分页区域 -->
+      <div id="pageBox"></div>
+    </div>
+  </div>
+  <!--* 定义 tbody 的模板 -->
+  <!--todo 因为暂时没有数据，不知道写得对不对 -->
+  <script type="text/html" id="tpl-list">
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>人生就像是场修行</td>
+      <td>没有例子我就硬上</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="1" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="1">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>不要管下面的数据</td>
+      <td>因为下面的数据是真实的服务器的数据</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="2" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="2">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>因为没有强管理员</td>
+      <td>我只能自己写几个</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="3" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="3">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>无法演示分页功能</td>
+      <td>凑合着看吧</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="4" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="4">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>写这些，就只是想看看弹出框</td>
+      <td>其他啥也不是</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="5" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="5">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>等会自己写几篇文章吧</td>
+      <td>趁人眉山多测试功能</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="6" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del"  data-id="6">删除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>贤心</td>
+      <td>2016-11-29</td>
+      <td>筛选、分页、删除、编辑都测试一下</td>
+      <td>其他啥也不是</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs edit" data-id="7" >编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="7">删除</button>
+      </td>
+    </tr>
+    {{each data}}
+      <tr>
+        <td>{{$value.title}}</td>
+        <td>{{$value.cate_name}}</td>
+        <td>{{$value.pub_date|timeFormat}}</td>
+        <td>{{$value.state}}</td>
+        <td>
+          <button type="button" class="layui-btn layui-btn-xs edit" data-id="Id">编辑</button>
+          <!--! 不能用id选择器，因为会渲染很多个tr出来，每个都id就只能找到第一个 -->
+          <button type="button" class="layui-btn layui-btn-danger layui-btn-xs del" data-id="Id">删除</button>
+        </td>
+      </tr>
+    {{/each}}
+  </script>
+
+  <!--* 定义分类选择框的模板 -->
+  <script type="text/html" id="tpl-select">
+    <option value="">所有分类</option>
+    {{each data}}
+      <option value="{{$value.Id}}">{{$value.name}}</option>
+    {{/each}}
+  </script>
+
+  <script src="../assets/lib/layui/layui.all.js"></script>
+  <script src="../assets/lib/jquery.js"></script>
+  <script src="../assets/js/baseAPI.js"></script>
+  <script src="../assets/lib/template-web.js"></script>
+  <script src="../assets/js/article/article_list.js"></script>
+</body>
+</html>
